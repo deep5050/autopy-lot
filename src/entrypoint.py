@@ -42,6 +42,7 @@ OUTPUT_EXT = 'py'
 def prepare_command() -> str:
 
     command = "jupytext"
+    global OUTPUT_EXT
 
     if COMMENT_MAGICS:
         if COMMENT_MAGICS == 'true':
@@ -61,15 +62,15 @@ def prepare_command() -> str:
             command = command + ' --to py'
             OUTPUT_EXT = 'py'
 
-        if OUTPUT_TYPE == 'ipynb':
+        elif OUTPUT_TYPE == 'ipynb':
             command = command + ' --to ipynb'
             OUTPUT_EXT = 'ipynb'
 
-        if OUTPUT_TYPE == 'markdown':
+        elif OUTPUT_TYPE == 'markdown':
             command = command + ' --to markdown'
             OUTPUT_EXT = 'md'
 
-        if OUTPUT_TYPE == 'r':
+        elif OUTPUT_TYPE == 'r':
             command = command + ' --to r'
             OUTPUT_EXT = 'R'
 
