@@ -63,5 +63,5 @@ runs:
   image: "Dockerfile"
 
 branding:
-  icon: "chevron-right"
-  color: "green"
+  icon: "refresh-cw"
+  color: "black"
