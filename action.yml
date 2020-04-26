@@ -35,7 +35,7 @@ inputs:
     output_dir:
       description: "Output directory"
       default: './autopy-lot/'
-      required: false
+      required: true
 
 
   target_branch:
