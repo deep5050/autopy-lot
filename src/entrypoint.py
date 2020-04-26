@@ -34,7 +34,7 @@ COMMENT_MAGICS = os.environ['INPUT_COMMENT_MAGICS']  # [ true ]
 # [ true ] [ py, ipynb, markdown, rmarkdown, r ]
 SPLIT_AT_HEADING = os.environ['INPUT_SPLIT_AT_HEADING']
 OUTPUT_TYPE = os.environ['INPUT_OUTPUT_TYPE']
-OUTPUT_DIR = './autopy-lot/'
+OUTPUT_DIR = os.environ['INPUT_OUTPUT_DIR'] or './autopy-lot/'
 
 OUTPUT_EXT = 'py'
 
