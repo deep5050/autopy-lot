@@ -143,6 +143,7 @@ def main():
 
     if (GITHUB_EVENT_NAME == 'pull_request') and (GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER):
         return
+    sp.call(f'mkdir {OUTPUT_DIR}',shell=True) # creating the output directory
 
     command = prepare_command()
 
