@@ -1,1 +1,0 @@
-jupytext genomics.ipynb --to py  --opt comment_magics=true --opt split_at_heading=true -o genomics.py
