@@ -1,4 +1,6 @@
-# autopy-lot ![GitHub issues](https://img.shields.io/github/issues/deep5050/autopy-lot) ![GitHub Release Date](https://img.shields.io/github/release-date/deep5050/autopy-lot)
+# autopy-lot
+ ![GitHub issues](https://img.shields.io/github/issues/deep5050/autopy-lot) ![GitHub Release Date](https://img.shields.io/github/release-date/deep5050/autopy-lot)
+[![HitCount](http://hits.dwyl.com/deep5050/autopy-lot.svg)](http://hits.dwyl.com/deep5050/autopy-lot)
 A github action to perform ``AUTO``matic conversions from ju``PY``ter notebooks to markdown, python scripts and ``LOT`` more.
 
 This action uses [jupytext](https://github.com/mwouts/jupytext) internally for the conversions.
