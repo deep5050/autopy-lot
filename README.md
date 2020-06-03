@@ -1,11 +1,15 @@
-# autopy-lot
- ![GitHub issues](https://img.shields.io/github/issues/deep5050/autopy-lot)
- ![GitHub Release Date](https://img.shields.io/github/release-date/deep5050/autopy-lot)
- [![HitCount](http://hits.dwyl.com/deep5050/autopy-lot.svg)](http://hits.dwyl.com/deep5050/autopy-lot)
+<div align="center">
+ <p align="center"> <a href="https://github.com/deep5050/autopy-lot"><img src="https://i.imgur.com/WZSNO5m.png" title="AutoPy-lot"  align="center"/></a></p>
 
-A github action to perform ``AUTO``matic conversions from ju``PY``ter notebooks to markdown, python scripts and ``LOT`` more.
 
-This action uses [jupytext](https://github.com/mwouts/jupytext) internally for the conversions.
+<p align="center"> <h2 align="center">A github action to perform AUTOmatic conversions from juPYter notebooks to markdown, python scripts and LOT more</h2></p>
+
+<p align="center">This action uses <a src="https://github.com/mwouts/jupytext"> internally for the conversions</a></p>
+<p align="center"><img src="https://img.shields.io/github/issues/deep5050/autopy-lot"/>
+<p align="center"><img src="https://img.shields.io/github/release-date/deep5050/autopy-lot"/>
+<p align="center"><img src="http://hits.dwyl.com/deep5050/autopy-lot.svg)](http://hits.dwyl.com/deep5050/autopy-lot"/>
+ 
+</div>
 
 ## conversions:
 1. .ipynb -> .md
