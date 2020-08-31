@@ -1,9 +1,8 @@
+import json
 import os
 import re
-import json
-from glob import iglob
 import subprocess as sp
-
+from glob import iglob
 
 GITHUB_EVENT_NAME = os.environ["GITHUB_EVENT_NAME"]
 

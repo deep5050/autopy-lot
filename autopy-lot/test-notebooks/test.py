@@ -15,11 +15,12 @@
 # + [markdown] id="VS_EDvAXXlCq" colab_type="text"
 # # Initialization
 
+from collections import OrderedDict
+from os import listdir
+from os.path import isfile, join
 # + id="erUvXpQHXntK" colab_type="code" outputId="90803cc5-5a16-43ad-eaf8-6c74b1a003f2" colab={"base_uri": "https://localhost:8080/", "height": 35}
 from time import process_time
-from os.path import isfile, join
-from os import listdir
-from collections import OrderedDict
+
 import matplotlib.pyplot as plt
 from google.colab import drive
 
