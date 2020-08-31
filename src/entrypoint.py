@@ -10,14 +10,10 @@ GITHUB_EVENT_NAME = os.environ["GITHUB_EVENT_NAME"]
 CURRENT_REPOSITORY = os.environ["GITHUB_REPOSITORY"]
 # TODO: How about PRs from forks?
 TARGET_REPOSITORY = os.environ["INPUT_TARGET_REPOSITORY"] or CURRENT_REPOSITORY
-PULL_REQUEST_REPOSITORY = (
-    os.environ["INPUT_PULL_REQUEST_REPOSITORY"] or TARGET_REPOSITORY
-)
-REPOSITORY = (
-    PULL_REQUEST_REPOSITORY
-    if GITHUB_EVENT_NAME == "pull_request"
-    else TARGET_REPOSITORY
-)
+PULL_REQUEST_REPOSITORY = (os.environ["INPUT_PULL_REQUEST_REPOSITORY"]
+                           or TARGET_REPOSITORY)
+REPOSITORY = (PULL_REQUEST_REPOSITORY
+              if GITHUB_EVENT_NAME == "pull_request" else TARGET_REPOSITORY)
 
 # Set branches
 GITHUB_REF = os.environ["GITHUB_REF"]
@@ -95,8 +91,7 @@ def get_modified_files() -> list:
     cmd = "git diff-tree --no-commit-id --name-only -r HEAD"
     committed_files = sp.getoutput(cmd).split("\n")
     files = [
-        file
-        for file in committed_files
+        file for file in committed_files
         if (file.endswith(f".{INPUT_TYPE}") and os.path.isfile(file))
     ]
     return files
@@ -154,9 +149,8 @@ def push_changes():
 
 def main():
 
-    if (GITHUB_EVENT_NAME == "pull_request") and (
-        GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER
-    ):
+    if (GITHUB_EVENT_NAME == "pull_request") and (GITHUB_ACTOR !=
+                                                  GITHUB_REPOSITORY_OWNER):
         return
     sp.call(f"mkdir {OUTPUT_DIR}", shell=True)  # creating the output directory
 
@@ -166,11 +160,11 @@ def main():
         if CHECK == "all":
             files = get_all_files()  # select all specifies input files
         elif CHECK == "latest":
-            files = (
-                get_modified_files()
-            )  # select files only modified in the last commit
+            files = (get_modified_files()
+                     )  # select files only modified in the last commit
         else:
-            raise ValueError(f"{CHECK} is a wrong value. Expecting all or latest")
+            raise ValueError(
+                f"{CHECK} is a wrong value. Expecting all or latest")
     else:
         files = []
 

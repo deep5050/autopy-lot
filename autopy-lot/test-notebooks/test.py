@@ -25,7 +25,6 @@ from google.colab import drive
 
 drive.mount("/gdrive")
 
-
 # + [markdown] id="ZhUvOQAI5Tl3" colab_type="text"
 # # Boyer Moore Algorithm | Good Suffix heuristic
 # **DESCRIPTION**
@@ -41,6 +40,7 @@ drive.mount("/gdrive")
 # Good Suffix heuristic to find pattern in
 # given text string
 
+
 # preprocessing for strong good suffix rule
 def preprocess_strong_suffix(shift, bpos, pat, m):
 
@@ -50,13 +50,11 @@ def preprocess_strong_suffix(shift, bpos, pat, m):
     bpos[i] = j
 
     while i > 0:
-
         """if character at position i-1 is
         not equivalent to character at j-1,
         then continue searching to right
         of the pattern for border """
         while j <= m and pat[i - 1] != pat[j - 1]:
-
             """ the character preceding the occurrence
             of t in pattern P is different than the
             mismatching character in P, we stop skipping
@@ -67,7 +65,6 @@ def preprocess_strong_suffix(shift, bpos, pat, m):
 
             # Update the position of next border
             j = bpos[j]
-
         """ p[i-1] matched with p[j-1], border is found.
 		store the beginning position of border """
         i -= 1
@@ -81,13 +78,11 @@ def preprocess_strong_suffix(shift, bpos, pat, m):
 def preprocess_case2(shift, bpos, pat, m):
     j = bpos[0]
     for i in range(m + 1):
-
         """ set the border position of the first character
         of the pattern to all indices in array shift
         having shift[i] = 0 """
         if shift[i] == 0:
             shift[i] = j
-
         """ suffix becomes shorter than bpos[0],
 		use the position of next widest border
 		as value of j """
@@ -116,12 +111,10 @@ def BMPsearch_good(pat, text):
 
     while s <= n - m:
         j = m - 1
-
         """ Keep reducing index j of pattern while characters of
       pattern and text are matching at this shift s"""
         while j >= 0 and pat[j] == text[s + j]:
             j -= 1
-
         """ If the pattern is present at the current shift,
       then index j will become -1 after the above loop """
         if j < 0:
@@ -129,7 +122,6 @@ def BMPsearch_good(pat, text):
             pos.append(s)
             s += shift[0]
         else:
-
             """pat[i] != pat[s+j] so shift the pattern
             shift[j+1] times """
             s += shift[j + 1]
@@ -153,7 +145,7 @@ def find_repeats(dna, n):
     """
     repeats = {}
     for i in range(0, len(dna)):
-        repeat = dna[i : i + n]  # generate possible repeats
+        repeat = dna[i:i + n]  # generate possible repeats
         if len(repeat) == n:
             if repeat not in repeats:
                 repeats[repeat] = 1  # initiate record
@@ -169,7 +161,7 @@ def find_repeats(dna, n):
 def get_unique_patterns(dna, n):
     repeats = []
     for i in range(0, len(dna)):
-        repeat = dna[i : i + n]  # generate possible repeats
+        repeat = dna[i:i + n]  # generate possible repeats
         if len(repeat) == n:
             repeats.append(repeat)
     return sorted(list(dict.fromkeys(repeats)))  # eliminate duplicates
@@ -194,7 +186,7 @@ def get_repeats_with_loc(dna, n):
     print(patterns_loc)
     # now actually including all the locs
     for i in range(0, len(dna)):
-        repeat = dna[i : i + n]
+        repeat = dna[i:i + n]
         if len(repeat) == n:
             # get the location (where to be inserted in the pattern_loc) of the pattern just found
             arr_loc = patterns_loc[repeat]
@@ -208,14 +200,14 @@ def get_repeats_with_loc(dna, n):
 
 # %matplotlib inline
 
-
 ####################################################
 
 
 def plot_pattern_distr_by_frq(dna):
     codon_repeats = find_repeats(dna, 3)
     codon_repeats = {
-        k: v for k, v in sorted(codon_repeats.items(), key=lambda item: item[1])
+        k: v
+        for k, v in sorted(codon_repeats.items(), key=lambda item: item[1])
     }
     frq = list(codon_repeats.values())
     seq_x = list(codon_repeats.keys())
@@ -251,11 +243,8 @@ def print_pattern_wise_locs(patterns, locs):
     patterns = patterns
     locs = locs
     for i in range(0, len(patterns)):
-        print(
-            "Patterns:    {} | length: {} | loc: {}".format(
-                patterns[i], len(locs[i]), locs[i]
-            )
-        )
+        print("Patterns:    {} | length: {} | loc: {}".format(
+            patterns[i], len(locs[i]), locs[i]))
 
 
 # common patterns in individual files
@@ -295,12 +284,8 @@ def helper_function_2(my_path, length):
     for i in range(0, len(patterns)):
         # intersection of sets, holds only common elements if any
         common_patterns = common_patterns & set(patterns[i])
-    print(
-        "common patterns count: "
-        + str(len(common_patterns))
-        + " : "
-        + str(list(common_patterns))
-    )
+    print("common patterns count: " + str(len(common_patterns)) + " : " +
+          str(list(common_patterns)))
 
 
 ###########################
@@ -345,7 +330,7 @@ def find_repeats(data, n):
     """
     repeats = {}
     for i in range(0, len(data)):
-        repeat = data[i : i + n]  # generate possible repeats
+        repeat = data[i:i + n]  # generate possible repeats
         if len(repeat) == n:
             if repeat not in repeats:
                 repeats[repeat] = 1  # initiate record
@@ -384,7 +369,9 @@ def helper_function_4(path, len):
             content = file.readlines()[0]
             codon_repeats = find_repeats(content, len)
             codon_repeats = {
-                k: v for k, v in sorted(codon_repeats.items(), key=lambda item: item[0])
+                k: v
+                for k, v in sorted(codon_repeats.items(),
+                                   key=lambda item: item[0])
             }
             frq = list(codon_repeats.values())
             seq_x = list(codon_repeats.keys())
@@ -434,37 +421,43 @@ def helper_function_5(path, len):
 # ### Find Unique Patterns in all the files with pattern length 3
 
 # + id="LL0XGo27ZWjt" colab_type="code" outputId="7f8b759f-e501-4d8d-c1d0-162c0facea2e" colab={"base_uri": "https://localhost:8080/", "height": 0}
-helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 3)
+helper_funtion(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 3)
 
 # + [markdown] id="gA3MRUNAb_oG" colab_type="text"
 # ### Find Unique Patterns in all the files with pattern length 4
 
 # + id="XWJAERp-cDw-" colab_type="code" outputId="b09d9588-7e41-4558-cb8b-273242f49578" colab={"base_uri": "https://localhost:8080/", "height": 403}
-helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 4)
+helper_funtion(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 4)
 
 # + [markdown] id="0SUEeDCkcT3m" colab_type="text"
 # ### Find Unique Patterns in all the files with pattern length 5
 
 # + id="1tTsh866cbVo" colab_type="code" outputId="196f3414-8ddb-42d5-97c8-5ec6ae7bbd79" colab={"base_uri": "https://localhost:8080/", "height": 403}
-helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 5)
+helper_funtion(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 5)
 
 # + [markdown] id="ahITbF36dgpY" colab_type="text"
 # ### Find Unique Patterns in all the files with pattern length 6
 
 # + id="837t20qddjEP" colab_type="code" outputId="c8aea9c2-4375-44a8-868e-08ad161ec36a" colab={"base_uri": "https://localhost:8080/", "height": 0}
-helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 6)
+helper_funtion(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 6)
 
 # + [markdown] id="KHS3CK0vdrfr" colab_type="text"
 # ### Find Unique Patterns in all the files with pattern length 7
 
 # + id="dXl_rwLfdt1-" colab_type="code" outputId="4bfb416e-79b0-4605-8506-6c2aeb6d88c8" colab={"base_uri": "https://localhost:8080/", "height": 403}
-helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 7)
+helper_funtion(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 7)
 
 # + [markdown] id="88LILsoxdz10" colab_type="text"
 # ### Find Unique Patterns in all the files with pattern length 8
 
 # + id="mi5CoVd0d3wf" colab_type="code" outputId="08c2f8fa-b4d7-4515-b82c-7f9d106969e6" colab={"base_uri": "https://localhost:8080/", "height": 403}
-helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 8)
+helper_funtion(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 8)
 
 # + [markdown] id="uQC9Zq5bkCv0" colab_type="text"
 # ## Common Patterns
@@ -475,32 +468,28 @@ helper_funtion("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_
 
 # + id="z57V6ZYDgtM9" colab_type="code" outputId="40fe8658-6bd6-41ab-f7d0-a56e072cf8a5" colab={"base_uri": "https://localhost:8080/", "height": 0}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 3
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 3)
 
 # + [markdown] id="LvVR78SzhwQR" colab_type="text"
 # ### Find common Unique Patterns considering all the files with pattern length 4
 
 # + id="78I3rcW9kHCA" colab_type="code" outputId="3e89e843-bf84-442d-ed9f-a6b4cb351c57" colab={"base_uri": "https://localhost:8080/", "height": 0}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 4
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 4)
 
 # + [markdown] id="Wvu9uJ3Tqon9" colab_type="text"
 # ### Find common Unique Patterns considering all the files with pattern length 5
 
 # + id="OOe8TFLZqp-8" colab_type="code" outputId="dca44c02-4063-4211-c2b0-51a00d122805" colab={"base_uri": "https://localhost:8080/", "height": 0}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 5
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 5)
 
 # + [markdown] id="jKsq8WQbqwCu" colab_type="text"
 # ### Find common Unique Patterns considering all the files with pattern length 6
 
 # + id="AU0yoEiJqy1m" colab_type="code" outputId="06048ab7-152f-491e-ebe0-385458ceabb0" colab={"base_uri": "https://localhost:8080/", "height": 0}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 6
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 6)
 
 # + [markdown] id="ArEMGMRushAW" colab_type="text"
 # ## Find common locs for each patterns with pattern length 3
@@ -772,8 +761,8 @@ patterns = [
     "541",
 ]
 common_loc_pattern(
-    patterns, "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1"
-)
+    patterns,
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1")
 
 # + [markdown] id="2_NXeuLmtLgW" colab_type="text"
 # ## Find common locs for each patterns with pattern length 4
@@ -794,31 +783,30 @@ patterns = [
     "8881",
 ]
 common_loc_pattern(
-    patterns, "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1"
-)
+    patterns,
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1")
 
 # + [markdown] id="uR3AjmHYvRRe" colab_type="text"
 # ## Codon distribution
 # Prints the number of occurence of each codon in every file
 
 # + id="gM0x75rZvVFB" colab_type="code" outputId="51ffb184-4d2b-46c2-b9a9-6af71ed2c546" colab={"base_uri": "https://localhost:8080/", "height": 403}
-helper_function_3("/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1")
+helper_function_3(
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1")
 
 # + [markdown] id="M8FAORkO-Qgw" colab_type="text"
 # ## Plot codon Distribution
 
 # + id="hP_8CFZ_-VVc" colab_type="code" outputId="16e81737-d1af-4654-f2c5-fcf1c02e6c75" colab={"base_uri": "https://localhost:8080/", "height": 1000}
 helper_function_4(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 1
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 1)
 
 # + [markdown] id="mkZ3J5DNA8kY" colab_type="text"
 # ## Percentage of each codon
 
 # + id="ivu4-sJTBAyJ" colab_type="code" outputId="c740e2d6-7e82-4bc0-9ee3-4809e6b50bc6" colab={"base_uri": "https://localhost:8080/", "height": 1000}
 helper_function_5(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 1
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_DJ1", 1)
 
 # + [markdown] id="VGm3cV_dFYqC" colab_type="text"
 # # PARKIN
@@ -832,51 +820,50 @@ helper_function_5(
 
 # + id="0ZFBx8-jFu0E" colab_type="code" outputId="9c0b96b3-34be-4ff1-83e4-cce89ee7b57b" colab={"base_uri": "https://localhost:8080/", "height": 917}
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 3
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    3)
 
 # + [markdown] id="nk_jZ9uiF5fG" colab_type="text"
 # ### Finding unique patterns with pattern length 4
 
 # + id="l-U2jwtpF9ZX" colab_type="code" outputId="e20d85e9-386d-41f2-c28e-4961de90c9e5" colab={"base_uri": "https://localhost:8080/", "height": 917}
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 4
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    4)
 
 # + id="9TLLf7P_F_US" colab_type="code" colab={}
-
 
 # + [markdown] id="5sDG_CYuGBRd" colab_type="text"
 # ### Finding qnique patterns with pattern length 5
 
 # + id="hF8NG_c8GGFS" colab_type="code" outputId="540936b9-7bae-40fd-977b-5368e1852be0" colab={"base_uri": "https://localhost:8080/", "height": 917}
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 5
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    5)
 
 # + [markdown] id="Zi7moBzTGKbM" colab_type="text"
 # ### Finding unique patterns with pattern length 6
 
 # + id="m-8C1K4kGQQT" colab_type="code" outputId="61bee587-10ca-4b01-8377-27ff1192d990" colab={"base_uri": "https://localhost:8080/", "height": 917}
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 6
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    6)
 
 # + [markdown] id="undRW7SNGTcH" colab_type="text"
 # ### Finding uniuqe patterns with pattern length 7
 
 # + id="3IBNwFuOGYxi" colab_type="code" outputId="2a0a78bf-b63e-4484-d935-fda8407bea64" colab={"base_uri": "https://localhost:8080/", "height": 917}
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 7
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    7)
 
 # + [markdown] id="L-kNe6qnGnO9" colab_type="text"
 # ### Finding unique patterns with pattern length 8
 
 # + id="UMZIdsnpGsmc" colab_type="code" outputId="9fc59733-70ba-485e-fbae-984804c2f00f" colab={"base_uri": "https://localhost:8080/", "height": 917}
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 8
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    8)
 
 # + [markdown] id="BwjyAJt9GyBw" colab_type="text"
 # ## Common patterns
@@ -886,24 +873,24 @@ helper_funtion(
 
 # + id="6z0alVcTHBmL" colab_type="code" outputId="bc4966c3-8f5e-47b7-fc76-1ed965df5fe6" colab={"base_uri": "https://localhost:8080/", "height": 55}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 3
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    3)
 
 # + [markdown] id="YTTLaNCWHMJ7" colab_type="text"
 # ### Finding common patterns with pattern length 4
 
 # + id="iF7LFTItHP5k" colab_type="code" outputId="8c39c5a5-f1f9-4038-de1a-66d1a6895fe0" colab={"base_uri": "https://localhost:8080/", "height": 35}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 4
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    4)
 
 # + [markdown] id="I_Tp8TZuHVrt" colab_type="text"
 # ### Finding common patterns with pattern length 5
 
 # + id="UNjaY8NpHZtt" colab_type="code" outputId="e1eab1f6-783b-45b9-ec03-fe17e9fdb4ff" colab={"base_uri": "https://localhost:8080/", "height": 35}
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 5
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    5)
 
 # + [markdown] id="2qInfXXrHj6f" colab_type="text"
 # ## Common locs
@@ -1064,8 +1051,8 @@ patterns = [
     "271",
 ]
 common_loc_pattern(
-    patterns, "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN"
-)
+    patterns,
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN")
 
 # + [markdown] id="QCGF3eDs0Nt-" colab_type="text"
 # ### common locs of length 4
@@ -1073,8 +1060,8 @@ common_loc_pattern(
 # + id="bAsB1moa0RL1" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 109} outputId="c98315dc-1070-4a20-e195-a553df75158a"
 patterns = ["3111", "1113", "7858", "1125", "8181"]
 common_loc_pattern(
-    patterns, "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN"
-)
+    patterns,
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN")
 
 # + [markdown] id="qKKn174u1nwL" colab_type="text"
 # ## codon distribution
@@ -1082,24 +1069,23 @@ common_loc_pattern(
 
 # + id="xzCr0QDl1q26" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 937} outputId="d5ccc112-4cf9-4d0f-813a-edb72d210822"
 helper_function_3(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN"
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN")
 
 # + [markdown] id="zoOsJH9u16dX" colab_type="text"
 # ## plot codon distribution
 
 # + id="vUlU7QEC19Iy" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 1000} outputId="c5633ceb-19e7-44eb-f321-9911bb5a9e38"
 helper_function_4(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 1
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    1)
 
 # + [markdown] id="UqMgWh232NkG" colab_type="text"
 # ## percentage of each codon
 
 # + id="UXQq8GW52QaG" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 1000} outputId="cd792b68-6167-4d5b-cc8f-501a5ee992a3"
 helper_function_5(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN", 1
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PARKIN",
+    1)
 
 # + [markdown] id="6J-h86vy4OB_" colab_type="text"
 # # PINK1
@@ -1112,48 +1098,42 @@ helper_function_5(
 
 # + id="GLS6gvT94fjw" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="ddc8e463-4303-45cf-8124-64c6c537372b"
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 3
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 3)
 
 # + [markdown] id="2vtWGjNi4sWO" colab_type="text"
 # ### Finding unique patternns of  length 4
 
 # + id="zJ1gs3n-4vrN" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="ad1b5e6f-6c95-49c3-d26c-47e5cff3440f"
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 4
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 4)
 
 # + [markdown] id="6OaiixAC4zID" colab_type="text"
 # ### Finding unique patterns of length 5
 
 # + id="cEjei6LN42f_" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="6ee81dcc-860a-4fc2-a024-6023fb2825af"
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 5
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 5)
 
 # + [markdown] id="E7fOhCV947hE" colab_type="text"
 # ###  Finding unique patterns of length 6
 
 # + id="DewM4T3n4-15" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="36ee3332-1fd0-4554-b5cb-53a17e6f066b"
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 6
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 6)
 
 # + [markdown] id="7lw94Vh75Dcj" colab_type="text"
 # ### Finding unique patterns of length 7
 
 # + id="actEkNb45I-g" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="39e30eb7-0d7a-4cc2-b326-d14046b95033"
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 7
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 7)
 
 # + [markdown] id="vXjdV8q05Qzs" colab_type="text"
 # ### finding unique patterns of length of 8
 
 # + id="-12CcNsP5Vis" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="1ec4e8ee-f885-484e-d668-cf219126418d"
 helper_funtion(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 8
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 8)
 
 # + [markdown] id="56z-A5kq5n-Z" colab_type="text"
 # ## common patterns
@@ -1163,24 +1143,21 @@ helper_funtion(
 
 # + id="YCSCIdNe5wzT" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 55} outputId="ea84f849-3adb-41e9-f1b1-11981fd801d9"
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 3
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 3)
 
 # + [markdown] id="3cgwW1YS56gR" colab_type="text"
 # ### common patterns of length 4
 
 # + id="5zFnz-i259cO" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 35} outputId="0628be76-e798-43c6-84b6-4831538720d5"
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 4
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 4)
 
 # + [markdown] id="oXOR0RmA6DWv" colab_type="text"
 # ### common patterns of length 5
 
 # + id="iD1Oe9B96GZS" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 35} outputId="8a259836-b147-49d9-f6dd-e8ece949abf9"
 helper_function_2(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 5
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 5)
 
 # + [markdown] id="TcsJlles6N9H" colab_type="text"
 # ## Common locs
@@ -1333,8 +1310,8 @@ patterns = [
     "714",
 ]
 common_loc_pattern(
-    patterns, "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1"
-)
+    patterns,
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1")
 
 # + [markdown] id="l52-5uA26otN" colab_type="text"
 # ### common locs with patterns length 4
@@ -1342,32 +1319,29 @@ common_loc_pattern(
 # + id="SMvLouFZ6tSb" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 35} outputId="faace1e3-72df-4c08-baa9-5e86cd923e12"
 patterns = ["8883"]
 common_loc_pattern(
-    patterns, "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1"
-)
+    patterns,
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1")
 
 # + [markdown] id="iu5LZi4V7D4Y" colab_type="text"
 # ## codon distribution
 
 # + id="h5LEfiAb7Gab" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 531} outputId="d6c5a3bc-16d9-4642-c18c-d09e354fae94"
 helper_function_3(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1"
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1")
 
 # + [markdown] id="c2upZkBM7ORR" colab_type="text"
 # ## Plot codon distribution
 
 # + id="Rx2piH6j7QrO" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 1000} outputId="7e0bbef4-9c92-469b-ebed-86d40bdcc61b"
 helper_function_4(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 1
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 1)
 
 # + [markdown] id="YHdWwhds7bHu" colab_type="text"
 # ## percentage of each codon
 
 # + id="NZKM3ROf7dfO" colab_type="code" colab={"base_uri": "https://localhost:8080/", "height": 1000} outputId="707c4b34-7561-48f0-c75e-a6aa6f3ef8dc"
 helper_function_5(
-    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 1
-)
+    "/gdrive/My Drive/Genomics/job/data/Output_RYNUM/RYNUM_output_RY_PINK1", 1)
 
 # + [markdown] id="zgeCiQbm7-KZ" colab_type="text"
 # # CONCLUSION
