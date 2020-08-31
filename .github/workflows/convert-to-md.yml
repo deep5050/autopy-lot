@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: autopy-lot 
-        uses: deep5050/autopy-lot@patch
+        uses: deep5050/autopy-lot@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           output_type: markdown
