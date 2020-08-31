@@ -1,0 +1,14 @@
+name: test-markdown
+on: [push]
+
+jobs:
+  build:
+    name: autopy-lot-md
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: autopy-lot 
+        uses: deep5050/autopy-lot@patch
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          output_type: markdown
