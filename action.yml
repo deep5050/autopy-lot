@@ -32,10 +32,10 @@ inputs:
     default: "py"
     required: false
 
-    output_dir:
-      description: "Output directory"
-      default: './autopy-lot/'
-      required: true
+  output_dir:
+    description: "Output directory"
+    default: './autopy-lot/'
+    required: true
 
 
   target_branch:
