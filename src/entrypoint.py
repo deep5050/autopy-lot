@@ -97,6 +97,7 @@ def get_modified_files() -> list:
 def convert_files(files: list, command: str) -> list:
     """Iterates over input file list.
     """
+    sp.call(f'mkdir -p {OUTPUT_DIR}',shell=True)
     output_files = []
     for file in files:
         output_file_name = f'{OUTPUT_DIR}{os.path.splitext(file)[0]}.{OUTPUT_EXT}'
