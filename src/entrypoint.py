@@ -97,12 +97,12 @@ def get_modified_files() -> list:
 def convert_files(files: list, command: str) -> list:
     """Iterates over input file list.
     """
-     
+
     output_files = []
     for file in files:
-        to_write_dir = os.path.join(OUTPUT_DIR ,os.path.split(file)[0])
+        to_write_dir = os.path.join(OUTPUT_DIR, os.path.split(file)[0])
         print(" $$$$$$ "+to_write_dir)
-        sp.call(f'mkdir -p {to_write_dir}',shell=True)
+        sp.call(f'mkdir -p {to_write_dir}', shell=True)
         output_file_name = f'{OUTPUT_DIR}{os.path.splitext(file)[0]}.{OUTPUT_EXT}'
         output_files.append(output_file_name)
 
@@ -148,7 +148,7 @@ def main():
 
     if (GITHUB_EVENT_NAME == 'pull_request') and (GITHUB_ACTOR != GITHUB_REPOSITORY_OWNER):
         return
-    sp.call(f'mkdir {OUTPUT_DIR}',shell=True) # creating the output directory
+    sp.call(f'mkdir {OUTPUT_DIR}', shell=True)  # creating the output directory
 
     command = prepare_command()
 
