@@ -4,7 +4,7 @@
 
 <p align="center"> <h2 align="center">A github action to perform AUTOmatic conversions from juPYter notebooks to markdown, python scripts and LOT more</h2></p>
 
-<p align="center">This action uses <a src="https://github.com/mwouts/jupytext"> internally for the conversions</a></p>
+<p align="center">This action uses jupytext <a src="https://github.com/mwouts/jupytext"> internally for the conversions</a></p>
 <p align="center"><img src="https://img.shields.io/github/issues/deep5050/autopy-lot"/>
 <p align="center"><img src="https://img.shields.io/github/release-date/deep5050/autopy-lot"/>
 <p align="center"><img src="http://hits.dwyl.com/deep5050/autopy-lot.svg)](http://hits.dwyl.com/deep5050/autopy-lot"/>
