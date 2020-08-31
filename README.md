@@ -4,12 +4,14 @@
 
 <p align="center"> <h2 align="center">A github action to perform AUTOmatic conversions from juPYter notebooks to markdown, python scripts and LOT more</h2></p>
 
+
 <p align="center">This action uses jupytext <a src="https://github.com/mwouts/jupytext"> internally for the conversions</a></p>
-<p align="center"><img src="https://img.shields.io/github/issues/deep5050/autopy-lot"/>
-<p align="center"><img src="https://img.shields.io/github/release-date/deep5050/autopy-lot"/>
-<p align="center"><img src="http://hits.dwyl.com/deep5050/autopy-lot.svg)](http://hits.dwyl.com/deep5050/autopy-lot"/>
- 
 </div>
+
+
+![test-markdown](https://github.com/deep5050/autopy-lot/workflows/test-markdown/badge.svg)
+![test-py](https://github.com/deep5050/autopy-lot/workflows/test-py/badge.svg)
+![vistors](http://hits.dwyl.com/deep5050/autopy-lot.svg)
 
 ## conversions:
 1. .ipynb -> .md
@@ -117,3 +119,4 @@ SOFTWARE.
 
 ## Thanks
 Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+
