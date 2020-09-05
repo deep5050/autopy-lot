@@ -12,6 +12,7 @@
 ![test-markdown](https://github.com/deep5050/autopy-lot/workflows/test-markdown/badge.svg)
 ![test-py](https://github.com/deep5050/autopy-lot/workflows/test-py/badge.svg)
 ![vistors](http://hits.dwyl.com/deep5050/autopy-lot.svg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeep5050%2Fautopy-lot.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeep5050%2Fautopy-lot?ref=badge_shield)
 
 ## conversions:
 1. .ipynb -> .md
@@ -117,6 +118,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdeep5050%2Fautopy-lot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdeep5050%2Fautopy-lot?ref=badge_large)
+
 ## Thanks
 Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-
