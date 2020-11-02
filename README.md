@@ -1,4 +1,4 @@
-![autopy-lot](https://socialify.git.ci/deep5050/autopy-lot/image?description=1&font=Source%20Code%20Pro&logo=https%3A%2F%2Fi.imgur.com%2FWZSNO5m.png&pattern=Signal&theme=Light)
+![autopy-lot](https://socialify.git.ci/deep5050/autopy-lot/image?description=1&descriptionEditable=github%20action%20to%20convert%20jupyter%20notebooks%20to%20various%20formats&font=Source%20Code%20Pro&forks=1&issues=1&logo=https%3A%2F%2Fi.imgur.com%2FWZSNO5m.png&pattern=Signal&pulls=1&stargazers=1&theme=Light)
 
 
 ![test-markdown](https://github.com/deep5050/autopy-lot/workflows/test-markdown/badge.svg)
