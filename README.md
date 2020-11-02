@@ -1,12 +1,4 @@
-<div align="center">
- <p align="center"> <a href="https://github.com/deep5050/autopy-lot"><img src="https://i.imgur.com/WZSNO5m.png" title="AutoPy-lot"  align="center"/></a></p>
-
-
-<p align="center"> <h2 align="center">A github action to perform AUTOmatic conversions from juPYter notebooks to markdown, python scripts and LOT more</h2></p>
-
-
-<p align="center">This action uses jupytext <a src="https://github.com/mwouts/jupytext"> internally for the conversions</a></p>
-</div>
+![autopy-lot](https://socialify.git.ci/deep5050/autopy-lot/image?description=1&font=Source%20Code%20Pro&logo=https%3A%2F%2Fi.imgur.com%2FWZSNO5m.png&pattern=Signal&theme=Light)
 
 
 ![test-markdown](https://github.com/deep5050/autopy-lot/workflows/test-markdown/badge.svg)
